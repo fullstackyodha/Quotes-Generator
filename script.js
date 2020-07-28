@@ -13,8 +13,15 @@ async function getQuote(){
     try{
         const response = await fetch(proxy + apiUrl)
         const data = await response.json()
-        
-        // console.log(data)
+
+
+        // if(data.quoteText.length() > 50){
+        //     quoteText.classList.add("long-quote")
+        // }else{
+        //     quoteText.classList.remove("long-quote")
+        // }
+
+        quoteText.innerText = data.quoteText
 
         if(data.quoteAuthor === ""){
             authorText.innerText = "~ Unknown"
@@ -22,16 +29,8 @@ async function getQuote(){
             authorText.innerText = `~ ${data.quoteAuthor}`
         }
 
-        if(data.quoteText.length() > 50){
-            quoteText.classList.add("long-quote")
-        }else{
-            quoteText.classList.remove("long-quote")
-        }
-
-        quoteText.innerText = data.quoteText
-
     }catch(err){
-
+        console.log(err)
     }
 }
 
