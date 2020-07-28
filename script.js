@@ -31,11 +31,10 @@ async function getQuote(){
 
 
     }catch(err){
-        console.log(err)
+        getQuote()
     }
 }
 
 
 // On Load
-getQuote()
 newQuoteBtn.addEventListener('click', getQuote)
